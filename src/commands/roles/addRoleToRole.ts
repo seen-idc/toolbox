@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import { Role } from 'discord.js'
 
-import { defCommand, disabled } from '../../util/commands'
+import { commandDeprecated, CommandFunction, defCommand, disabled } from '../../util/commands'
 
 const slashCommandData = new SlashCommandBuilder()
   .setName('add-role-to-role')
@@ -21,7 +21,7 @@ slashCommandData.addRoleOption((opt) =>
 export default defCommand({
   name: 'add-role-to-role',
   aliases: ['artr'],
-  cooldown: 3,
+  cooldown: 10,
   description: 'Adds a role to all the members with a role.',
   usage: '<Selector_Role> <Added_Role>',
   category: 'roles',
@@ -30,7 +30,7 @@ export default defCommand({
     member: ['MANAGE_ROLES'],
     bot: ['MANAGE_ROLES'],
   },
-  run: disabled,
+  run: commandDeprecated('message', 'the slash command instead.') as CommandFunction,
   interaction: async (client, interaction) => {
     if (!interaction.isCommand()) return
     if (!interaction.guild) return
