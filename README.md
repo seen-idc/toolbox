@@ -17,5 +17,9 @@ CLIENT_SECRET=SECRET
 3. Run `npm start` to format, build and then start the bot.
 
 ## Commands
+- Misc
+  -  `ping`: Latency and memory stats
+  - `help`: Help menu
 - Roles
   - `add-role-to-role`: Adds a role to everyone with another role
+  - `rem-role-from-role`: Removes a role from everyone with another role
