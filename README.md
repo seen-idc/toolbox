@@ -1,14 +1,6 @@
-# Simple discord bot template
+# Toolbox
 
-Simple typescript discord bot template, includes support for slash commands and normal commands.
-
-## Features
-
-- Command handler for slash commands and normal commands
-  - Includes permission checking
-  - Built-in help command
-  - Configurable cooldowns
-- Event handler
+Bot written in typescript to perform tasks that would normally take a while.
 
 ## Setup
 
@@ -23,3 +15,7 @@ CLIENT_SECRET=SECRET
 ```
 
 3. Run `npm start` to format, build and then start the bot.
+
+## Commands
+- Roles
+  - `add-role-to-role`: Adds a role to everyone with another role
