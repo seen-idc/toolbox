@@ -10,7 +10,7 @@ const slashCommandData = new SlashCommandBuilder()
 slashCommandData.addRoleOption((opt) =>
   opt
     .setName('selector_role')
-    .setDescription('The role to which the role is to be added to')
+    .setDescription('The role which the role is to be added to')
     .setRequired(true)
 )
 

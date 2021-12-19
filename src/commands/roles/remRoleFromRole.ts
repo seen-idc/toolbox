@@ -10,7 +10,7 @@ const slashCommandData = new SlashCommandBuilder()
 slashCommandData.addRoleOption((opt) =>
   opt
     .setName('selector_role')
-    .setDescription('The role to which the role is to be removed from')
+    .setDescription('The role which the role is to be removed from')
     .setRequired(true)
 )
 
@@ -48,7 +48,10 @@ export default defCommand({
     let errored = false
     let message = ''
     members.forEach((member) => {
-      if (member.roles.cache.has(selRole?.id as string) && member.roles.cache.has(role?.id as string)) {
+      if (
+        member.roles.cache.has(selRole?.id as string) &&
+        member.roles.cache.has(role?.id as string)
+      ) {
         if (
           member.roles.highest.position > (interaction.guild?.me?.roles.highest.position as number)
         ) {
@@ -65,7 +68,9 @@ export default defCommand({
         }
       }
     })
-    interaction.reply(`Removed roles from **${counter} member${counter != 1 ? 's' : ''}**.\n${message}`)
+    interaction.reply(
+      `Removed roles from **${counter} member${counter != 1 ? 's' : ''}**.\n${message}`
+    )
   },
   slashCommand: slashCommandData,
 })
