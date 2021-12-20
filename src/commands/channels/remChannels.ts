@@ -49,7 +49,7 @@ export default defCommand({
     category.children.forEach(c => {
       if (c.deletable) {
         counter++
-        c.delete(`Deleting all channels in category ${deleteCategory ? 'and the category itself' : ''} ${category.name} (${category.id}) issued by ${interaction.user.tag} (${interaction.user.id})`)
+        c.delete(`Deleting all channels in category${deleteCategory ? ' and the category itself' : ''} ${category.name} (${category.id}) issued by ${interaction.user.tag} (${interaction.user.id})`)
       } else {
         if (!errored) {
           message = `Could not delete all the channels, the following channels still need to be deleted: `
@@ -63,11 +63,7 @@ export default defCommand({
       category.delete()
     }
     else {
-      if (!errored) {
-        message = `Could not delete all the channels, the following channels still need to be deleted: `
-      }
-
-      message = `${message}\nCategory itself`
+      message = `\n**Could not delete the category!**`
     }
     interaction.reply(`Deleted **${counter} channels**${deleteCategory ? ' (and the category itself)' : ''} from category \`${category.name}\`.\n${message}`)
   },
