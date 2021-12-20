@@ -7,7 +7,7 @@ function createEmbed(client: Client) {
     .setColor('NAVY')
     .setTitle('🔗 Invite')
     .setDescription(
-      `[\`[Invite Here]\`](https://discord.com/api/oauth2/authorize?client_id=922024346879406110&permissions=8&scope=bot%20applications.commands)\n[\`[Github]\`](https://github.com/seen-idc/toolbox)`
+      `[\`[Invite Here]\`](https://discord.com/api/oauth2/authorize?client_id=922024346879406110&permissions=8&scope=bot%20applications.commands)\n[\`[Github Repo]\`](https://github.com/seen-idc/toolbox)`
     )
 
   return embed
@@ -29,5 +29,7 @@ export default defCommand({
 
     interaction.reply({ embeds: [createEmbed(client)] })
   },
-  slashCommand: new SlashCommandBuilder().setName('invite').setDescription('Invite to your own server!'),
+  slashCommand: new SlashCommandBuilder()
+    .setName('invite')
+    .setDescription('Invite to your own server!'),
 })

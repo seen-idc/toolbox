@@ -55,7 +55,9 @@ export default defCommand({
           return
         } else {
           counter++
-          member.kick(`Kick role @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`)
+          member.kick(
+            `Kick role @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`
+          )
         }
       }
     })

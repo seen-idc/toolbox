@@ -61,7 +61,10 @@ export default defCommand({
           return
         } else {
           counter++
-          member.roles.add(role as Role, `Add role @${role?.name} (${role?.id}) on everyone with @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`)
+          member.roles.add(
+            role as Role,
+            `Add role @${role?.name} (${role?.id}) on everyone with @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`
+          )
         }
       }
     })

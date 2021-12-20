@@ -56,7 +56,7 @@ export default defCommand({
         } else {
           counter++
           member.ban({
-            reason: `Ban role @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`
+            reason: `Ban role @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`,
           })
         }
       }

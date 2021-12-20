@@ -64,7 +64,10 @@ export default defCommand({
           return
         } else {
           counter++
-          member.roles.remove(role as Role, `Remove role @${role?.name} (${role?.id}) on everyone with @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`)
+          member.roles.remove(
+            role as Role,
+            `Remove role @${role?.name} (${role?.id}) on everyone with @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`
+          )
         }
       }
     })
