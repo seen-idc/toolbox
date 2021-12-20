@@ -358,7 +358,7 @@ export function helpMain() {
     .setColor('BLURPLE')
     .setTitle('Help')
     .setDescription(
-      `Use \`${globalPrefix}help <category/category>\` to find help of a command/category`
+      `Use \`${globalPrefix}help <command/category>\` to find help of a command/category`
     )
 
   categoryMap.forEach((val, key) => {

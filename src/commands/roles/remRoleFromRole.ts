@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import { Role } from 'discord.js'
 
-import { defCommand, disabled, commandDeprecated, CommandFunction } from '../../util/commands'
+import { commandDeprecated, CommandFunction, defCommand } from '../../util/commands'
 
 const slashCommandData = new SlashCommandBuilder()
   .setName('rem-role-from-role')
@@ -27,7 +27,7 @@ export default defCommand({
   category: 'roles',
   commandPreference: 'slash',
   permissions: {
-    member: ['MANAGE_ROLES'],
+    member: ['ADMINISTRATOR'],
     bot: ['MANAGE_ROLES'],
   },
   run: commandDeprecated('message', 'the slash command instead.') as CommandFunction,
@@ -64,7 +64,7 @@ export default defCommand({
           return
         } else {
           counter++
-          member.roles.remove(role as Role)
+          member.roles.remove(role as Role, `Remove role @${role?.name} (${role?.id}) on everyone with @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`)
         }
       }
     })

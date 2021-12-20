@@ -1,17 +1,13 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
-import { Role } from 'discord.js'
 
-import { commandDeprecated, CommandFunction, defCommand, disabled } from '../../util/commands'
+import { commandDeprecated, CommandFunction, defCommand } from '../../util/commands'
 
 const slashCommandData = new SlashCommandBuilder()
   .setName('ban-role')
-  .setDescription('Bans all members with a role')
+  .setDescription('Bans all members with a role.')
 
 slashCommandData.addRoleOption((opt) =>
-  opt
-    .setName('selector_role')
-    .setDescription('The role which is gonna be banned')
-    .setRequired(true)
+  opt.setName('selector_role').setDescription('The role which is gonna be banned').setRequired(true)
 )
 
 export default defCommand({
@@ -23,7 +19,7 @@ export default defCommand({
   category: 'roles',
   commandPreference: 'slash',
   permissions: {
-    member: ['MANAGE_ROLES', 'BAN_MEMBERS'],
+    member: ['ADMINISTRATOR'],
     bot: ['MANAGE_ROLES', 'BAN_MEMBERS'],
   },
   run: commandDeprecated('message', 'the slash command instead.') as CommandFunction,
@@ -43,7 +39,10 @@ export default defCommand({
     let errored = false
     let message = ''
     members.forEach((member) => {
-      if (member.roles.cache.has(selRole?.id as string)) {
+      if (
+        member.roles.cache.has(selRole?.id as string) &&
+        interaction.guild?.ownerId !== member.id
+      ) {
         if (
           member.roles.highest.position > (interaction.guild?.me?.roles.highest.position as number)
         ) {
@@ -56,7 +55,9 @@ export default defCommand({
           return
         } else {
           counter++
-          member.ban()
+          member.ban({
+            reason: `Ban role @${selRole?.name} (${selRole?.id}) issued by ${interaction.user.tag} (${interaction.user.id})`
+          })
         }
       }
     })
